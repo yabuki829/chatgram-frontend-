@@ -1,9 +1,9 @@
 import React from 'react'
 
-const privacy = () => {
+const Privacy = () => {
   return (
     <div>プライバシーポリシー</div>
   )
 }
 
-export default privacy
+export default Privacy

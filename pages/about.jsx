@@ -1,7 +1,7 @@
 
 import React from 'react'
 import Link from 'next/link' 
-const about = () => {
+const About = () => {
   return (
     <div className='bg-gray-100 h-screen'>
         <div className='flex justify-between md:justify-around items-center  bg-white  md:my-10'>
@@ -41,4 +41,4 @@ const about = () => {
   )
 }
 
-export default about
+export default About

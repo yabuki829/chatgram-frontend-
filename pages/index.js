@@ -9,7 +9,7 @@ import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link' 
 
 
-const index = () => {
+const Index = () => {
   const [showContent, setShowContent] = useState(false);
   const [location,setLocation] =  useState("大阪");
   const [program, setProgram] = useState({
@@ -287,4 +287,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index

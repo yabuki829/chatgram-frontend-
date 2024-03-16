@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link' 
-const terms = () => {
+const Terms = () => {
   return (
     <div className='bg-gray-100 h-full '>
         <div className='flex justify-between md:justify-around items-center  bg-white md:my-10'>
@@ -104,4 +104,4 @@ const terms = () => {
   )
 }
 
-export default terms
+export default Terms
