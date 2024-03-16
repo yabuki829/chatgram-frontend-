@@ -130,6 +130,7 @@ const Index = () => {
     // alert(location+"の"+number+"チャンネルの番組を取得する")
     // const url = "http://127.0.0.1:8000/api/programs/";
     const url = process.env.NEXT_PUBLIC_BACKEND_URL + "api/programs"
+    console.log(url)
     const data = {
       "channel": number,
       "location":location
