@@ -30,6 +30,7 @@ const about = () => {
                 <h1 className='font-bold'>Q3. 禁止事項はありますか?</h1>
                 <p>A. 誹謗中傷、個人情報、暴言、その他不適切な投稿は禁止です。詳しくは利用規約を確認ください。</p>
                  <Link className=' mx-2 font-bold' href="/terms">利用規約</Link>
+                
             </div>
             
         </div>

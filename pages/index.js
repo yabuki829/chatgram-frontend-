@@ -9,7 +9,7 @@ import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link' 
 
 
-const test = () => {
+const index = () => {
   const [showContent, setShowContent] = useState(false);
   const [location,setLocation] =  useState("大阪");
   const [program, setProgram] = useState({
@@ -55,7 +55,7 @@ const test = () => {
       } else {
         // ユーザーがログアウトしている場合、匿名でログインする
         console.log("ユーザーがログアウトしています。匿名でログインします。");
-
+        // 匿名ログインしましたとアラートを出す
         signInAnonymously(auth);
         setUserId(auth.currentUser.uid)
       }
@@ -245,7 +245,7 @@ const test = () => {
             {program.id !== "" && (
             <div>
               <h1><strong>誹謗中傷</strong>、<strong>個人情報</strong>、<strong>暴言</strong>、 <strong>その他不適切な投稿</strong>は禁止です。</h1>
-               <Link className='text-blue-500 mx-2 font-bold' href="/terms">利用規約</Link>
+               <Link target="_blank" rel="noopener noreferrer"  className='text-blue-500 mx-2 font-bold' href="/terms">利用規約</Link>
               <div className='flex'>
                 <textarea className='w-full border p-2' type="text" value={message} onChange={handleMessageChange}  placeholder="メッセージを入力" />
                 <button className='pl-1' onClick={sendMessage}>
@@ -287,4 +287,4 @@ const test = () => {
   )
 }
 
-export default test
+export default index
