@@ -34,7 +34,7 @@ const Index = () => {
     const dbRef = ref(database, program.room);
     const unsubscribe = onValue(dbRef, (snapshot) => {
       const value = snapshot.val();
-      console.log("取得", value);
+      // console.log("取得", value);
       const messages = value ? Object.values(value) : [];
       setMessages(messages);
     });
@@ -48,13 +48,13 @@ const Index = () => {
     const unsubscribe = onAuthStateChanged(auth, user => {
       if (user) {
         // ユーザーがログインしている
-        console.log("ユーザーがログインしています:", user);
+        // console.log("ユーザーがログインしています:", user);
         setUserId(user.uid)
         // ここでバンされているアカウントか確認する
-        console.log("バンされているか確認します")
+        // console.log("バンされているか確認します")
       } else {
         // ユーザーがログアウトしている場合、匿名でログインする
-        console.log("ユーザーがログアウトしています。匿名でログインします。");
+        // console.log("ユーザーがログアウトしています。匿名でログインします。");
         // 匿名ログインしましたとアラートを出す
         signInAnonymously(auth);
         setUserId(auth.currentUser.uid)
@@ -109,12 +109,12 @@ const Index = () => {
           timestamp: new Date().toISOString(),
 
         });
-        console.log('Message sent successfully.');
+        // console.log('Message sent successfully.');
       } catch (e) {
         console.error('Error sending message:', e);
       }
     } else {
-      console.log('ユーザーがログインしていません。');
+      console.log('error user ');
     }
     setMessage("");
   };
@@ -126,11 +126,11 @@ const Index = () => {
 
   const swith_channel = (number) => {
     setShowContent(true);
-    console.log(location)
+    // console.log(location)
     // alert(location+"の"+number+"チャンネルの番組を取得する")
     // const url = "http://127.0.0.1:8000/api/programs/";
     const url = process.env.NEXT_PUBLIC_BACKEND_URL + "api/programs"
-    console.log(url)
+    // const url = "https://chatgram-c382b5c2754b.herokuapp.com/api/programs"
     const data = {
       "channel": number,
       "location":location
@@ -156,7 +156,7 @@ const Index = () => {
           )
         }
         else {
-          console.log("データ",response.data);
+          // console.log("データ",response.data);
           setProgram(response.data)
         }
         
