@@ -26,6 +26,7 @@ const Index = () => {
   const [userId,setUserId] =  useState("none");
 
   const [messages, setMessages] = useState([]);
+
   const [message, setMessage] = useState('');
 
   const auth = getAuth();
@@ -88,6 +89,7 @@ const Index = () => {
     const date = new Date(time);
     const hours = date.getHours().toString().padStart(2, '0');
     const minutes = date.getMinutes().toString().padStart(2, '0');
+  
     return `${hours}:${minutes}`;
   };
   
@@ -117,6 +119,7 @@ const Index = () => {
       console.log('error user ');
     }
     setMessage("");
+
   };
 
 
@@ -125,12 +128,21 @@ const Index = () => {
   };
 
   const swith_channel = (number) => {
+    setProgram({
+      id: "",
+      title: "",
+      detail: "",
+      start_time: "",
+      end_time: "",
+      tv_station: "",
+      room: "d"
+    })
+    setMessages([])
     setShowContent(true);
     // console.log(location)
     // alert(location+"の"+number+"チャンネルの番組を取得する")
     // const url = "http://127.0.0.1:8000/api/programs/";
     const url = process.env.NEXT_PUBLIC_BACKEND_URL + "api/programs"
-    // const url = "https://chatgram-c382b5c2754b.herokuapp.com/api/programs"
     const data = {
       "channel": number,
       "location":location
@@ -164,7 +176,6 @@ const Index = () => {
       })
       .catch(error => {
         console.error('番組情報の取得中にエラーが発生しました', error);
-        // エラーハンドリングを行う
       });
     
   };
@@ -174,9 +185,9 @@ const Index = () => {
   
   return (
     <div className='bg-gray-100 h-screen'>
-      <div className='flex justify-between md:justify-around items-center  bg-white'>
-       <div className='text-center my-10'>
-       <h1 className='  text-3xl font-bold'>Chatgram</h1>
+      <div className='flex justify-between md:justify-around items-center bg-blue-400'>
+       <div className='text-center my-4 md:my-10'>
+       <h1 className='  text-3xl font-bold mx-2'>Chatgram</h1>
         <select className='bg-white border' onChange={(e) => handleChange(e)}>
           <option value="大阪">大阪</option>
           <option value="東京">東京</option>
@@ -184,36 +195,39 @@ const Index = () => {
         </select>
        </div>
        <div>
-                <Link className='mx-2 font-bold' href="/about">About</Link>
-                {/* <Link className=' mx-2 font-bold' href="/terms">利用規約</Link> */}
-            </div>
+          <Link className='mx-2 font-bold' href="/about">About</Link>
+        </div>
 
       </div>
      
 
       {
         showContent ? (
-          <div className='md:w-2/3 mx-auto bg-white p-4 md:p-10 rounded md:my-10'>
-           
-
-           
-            <div className='mx-2'>
-              <div className='flex  items-center'>
-                <button className='border-2 rounded-full w-8 h-8 md:w-12 md:h-12 flex items-center justify-center my-5 mr-2 flex-shrink-0' onClick={() => setShowContent(false)} >←</button>
-                <h1 className='md:text-left font-bold text-xl md:text-3xl '>{program.title}</h1>
-              </div>
+          <div className='md:w-2/3 mx-auto bg-white p-2 md:p-10 rounded md:my-10'>
+            <div className='bg-gray-800 border-2 border-black p-2  shadow '>
+            <div className=' flex  items-center '>
+              <button className='bg-white border-2 rounded-full w-8 h-8 md:w-12 md:h-12 flex items-center justify-center my-5 mr-2 flex-shrink-0' onClick={() => setShowContent(false)} >←</button>
               {program.id !== "" && (
-              <p className=''>放送時間: {formatTime(program.start_time)} ~ {formatTime(program.end_time)}</p>
+                <p className='text-green-400  text-2xl font-bold'> {formatTime(program.start_time)} ~ {formatTime(program.end_time)}</p>
               )}
+              </div>
+              <div className='flex  items-center '>
+                <h1 className='text-white md:mx-4 font-bold text-2xl md:text-3xl '>{program.title}</h1>
+                
+              </div>
             </div>
-            
-            <div>
-
+          <div>
+          <div className='flex justify-center'>
+            <div class="border-x-4 h-2 w-2 border-black "></div>
+          </div>
+          <div className='flex justify-center mb-2'>
+            <div class="border-y-4 w-32 md:w-48 h-2 border-black rounded "></div>
+          </div>
            
             <div>
              
               {messages.map((msg, index) => (
-                <div key={index} className='my-2'>
+                <div id={index} key={index} className='my-2'>
                   <hr />
                   {
                     msg.userId === userId ?
@@ -268,7 +282,7 @@ const Index = () => {
               {[...Array(12).keys()].map((number) => (
                 <div key={number} className='flex justify-center my-2 '>
                   <button
-                  className='border-2 border-black bg-white hover:bg-black hover:text-white rounded-full w-24 md:w-32 h-24 md:h-32 text-3xl'
+                  className='border-2 border-black bg-white md:hover:bg-blue-400 md:hover:text-white rounded-full w-24 md:w-32 h-24 md:h-32 text-3xl'
                   onClick={() => swith_channel(number + 1)} 
                 >
                   {number + 1}
