@@ -42,7 +42,10 @@ const Index = () => {
     return () => unsubscribe();
   }, [program]);
 
-
+  // useEffect(() => {
+  //   // ここで副作用を実行します。例えばコンソールに出力するなど。
+  //   console.log(`New location is ${location}`);
+  // }, [location]);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, user => {
@@ -186,9 +189,9 @@ const Index = () => {
   
   return (
     <div className='bg-gray-100 h-screen'>
-      <div className='flex justify-between md:justify-around items-center bg-blue-400'>
+      <div className='flex justify-between md:justify-around items-center bg-blue-500'>
        <div className='text-center my-4 md:my-10'>
-       <h1 className='  text-3xl font-bold mx-2'>Chatgram</h1>
+       <h1 className='  text-3xl font-bold mx-2 text-white'>Chatgram</h1>
         <select className='bg-white border' onChange={(e) => handleChange(e)}>
           <option value="大阪">大阪</option>
           <option value="東京">東京</option>
@@ -196,7 +199,7 @@ const Index = () => {
         </select>
        </div>
        <div>
-          <Link className='mx-2 font-bold' href="/about">About</Link>
+          <Link className='mx-2 font-bold hover:underline text-white' href="/about">About</Link>
         </div>
 
       </div>
@@ -281,8 +284,8 @@ const Index = () => {
               
             <div className='grid grid-cols-3'>
             {[...Array(12).keys()].map((number) => {
-              const isInOsaka = channels.osaka.includes(number + 1);
-
+              const isInOsaka = channels[location].includes(number + 1);
+              
               return (
                 <div key={number} className='flex justify-center my-2'>
                   {isInOsaka ? (

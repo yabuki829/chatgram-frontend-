@@ -4,17 +4,17 @@ import Link from 'next/link'
 const About = () => {
   return (
     <div className='bg-gray-100 h-screen'>
-        <div className='flex justify-between md:justify-around items-center  bg-white  md:my-10'>
+        <div className='flex justify-between md:justify-around items-center  bg-blue-500'>
             <div className='text-center my-10'>
-                <Link className='  text-3xl font-bold' href="/">Chatgram</Link>
+                <Link className='  text-3xl font-bold text-white' href="/">Chatgram</Link>
             </div>
             <div>
-                <a className='mx-2 font-bold' href="">About</a>
+                <a className='mx-2 font-bold text-white' href="">About</a>
                 {/* <Link className=' mx-2 font-bold' href="/terms">利用規約</Link> */}
                 </div>
             </div>
         
-        <div className='md:w-2/3 mx-auto bg-white p-4 md:p-10 rounded'>
+        <div className='md:w-2/3 mx-auto bg-white p-4 md:p-10 rounded my-10'>
            
             <div className='my-2'>
                 <h1 className='font-bold'>Q1. どんなサイトですか？</h1>
@@ -28,8 +28,8 @@ const About = () => {
             <hr className='py-2' />
             <div className='my-2'>
                 <h1 className='font-bold'>Q3. 禁止事項はありますか?</h1>
-                <p>A. 誹謗中傷、個人情報、暴言、その他不適切な投稿は禁止です。詳しくは利用規約を確認ください。</p>
-                 <Link className=' mx-2 font-bold' href="/terms">利用規約</Link>
+                <p>A. 誹謗中傷、個人情報、暴言、その他不適切な投稿は禁止です。詳しくは<Link className=' mx-1 font-bold hover:underline' href="/terms">利用規約</Link>を確認ください。</p>
+                 
                 
             </div>
             
