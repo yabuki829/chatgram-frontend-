@@ -7,7 +7,7 @@ import { getAuth, onAuthStateChanged, signInAnonymously, } from "firebase/auth";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link' 
-
+import channels from "../channels"
 
 const Index = () => {
   const [showContent, setShowContent] = useState(false);
@@ -21,7 +21,6 @@ const Index = () => {
     tv_station: "",
     room: "d"
   });
-
 
   const [userId,setUserId] =  useState("none");
 
@@ -182,6 +181,8 @@ const Index = () => {
   const handleChange = (e) => {
     setLocation(e.target.value)
   }
+
+  
   
   return (
     <div className='bg-gray-100 h-screen'>
@@ -232,6 +233,7 @@ const Index = () => {
                   {
                     msg.userId === userId ?
                     <>
+
                       <h1>{index + 1} : {msg.userId}</h1>
                       <div className='flex justify-end'>
                         <p className='bg-blue-500 inline-block px-3 py-2 text-white rounded-full my-2 text'>{msg.message}</p> 
@@ -278,17 +280,27 @@ const Index = () => {
           <div className='md:w-1/3 mx-auto'>
               
             <div className='grid grid-cols-3'>
+            {[...Array(12).keys()].map((number) => {
+              const isInOsaka = channels.osaka.includes(number + 1);
 
-              {[...Array(12).keys()].map((number) => (
-                <div key={number} className='flex justify-center my-2 '>
-                  <button
-                  className='border-2 border-black bg-white md:hover:bg-blue-400 md:hover:text-white rounded-full w-24 md:w-32 h-24 md:h-32 text-3xl'
-                  onClick={() => swith_channel(number + 1)} 
-                >
-                  {number + 1}
-                </button>
+              return (
+                <div key={number} className='flex justify-center my-2'>
+                  {isInOsaka ? (
+                    <button
+                      className='border-2 border-black bg-white md:hover:bg-blue-400 md:hover:text-white rounded-full w-24 md:w-32 h-24 md:h-32 text-3xl'
+                      onClick={() => swith_channel(number + 1)}
+                    >
+                      {number + 1}
+                    </button>
+                  ) : (
+                    <div className='border-2 border-black bg-gray-800 rounded-full w-24 md:w-32 h-24 md:h-32 text-3xl flex justify-center items-center'>
+                      {number + 1}
+                    </div>
+                  )}
                 </div>
-              ))}
+              );
+            })}
+
             </div>
           </div>
        
