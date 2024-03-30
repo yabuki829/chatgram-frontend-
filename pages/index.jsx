@@ -1,4 +1,6 @@
 import React, { useState,useEffect } from 'react'
+import Image from "next/image";
+import tvimage from "../public/tv2.png";
 import axios from "axios";
 import {database } from '../firebase/firebase'
 import { ref, push,onValue } from "firebase/database";
@@ -34,18 +36,21 @@ const Index = () => {
     const dbRef = ref(database, program.room);
     const unsubscribe = onValue(dbRef, (snapshot) => {
       const value = snapshot.val();
-      // console.log("取得", value);
-      const messages = value ? Object.values(value) : [];
+      console.log("取得", value);
+
+      const messages = value ? Object.entries(value).map(([key, msg]) => ({
+        ...msg, 
+        id: key 
+      })) : [];
+  
+      console.log(messages);
       setMessages(messages);
     });
   
     return () => unsubscribe();
   }, [program]);
 
-  // useEffect(() => {
-  //   // ここで副作用を実行します。例えばコンソールに出力するなど。
-  //   console.log(`New location is ${location}`);
-  // }, [location]);
+
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, user => {
@@ -188,10 +193,18 @@ const Index = () => {
   
   
   return (
-    <div className='bg-gray-100 h-screen'>
+    <div className='bg-gray-100 min-h-screen'>
+      
       <div className='flex justify-between md:justify-around items-center bg-blue-500'>
-       <div className='text-center my-4 md:my-10'>
-       <h1 className='  text-3xl font-bold mx-2 text-white'>Chatgram</h1>
+       <div className='flex md:block items-center text-center my-4 md:my-10'>
+
+        <div className='hidden md:flex items-center '>
+          <Image className=' w-10 h-10 ' src={tvimage} alt="icon" />
+          <h1 className='text-3xl font-bold mx-2 text-white'>テレビ感想.com</h1>
+        </div>
+       
+        <Image className='block md:hidden w-20 h-20 mx-5 md:mx-10' src={tvimage} alt="icon" />
+  
         <select className='bg-white border' onChange={(e) => handleChange(e)}>
           <option value="大阪">大阪</option>
           <option value="東京">東京</option>
@@ -199,7 +212,7 @@ const Index = () => {
         </select>
        </div>
        <div>
-          <Link className='mx-2 font-bold hover:underline text-white' href="/about">About</Link>
+          <Link className='mx-2 font-bold hover:underline text-white mx-10' href="/about">About</Link>
         </div>
 
       </div>
@@ -207,7 +220,7 @@ const Index = () => {
 
       {
         showContent ? (
-          <div className='md:w-2/3 mx-auto bg-white p-2 md:p-10 rounded md:my-10'>
+          <div className='md:w-2/3 mx-auto bg-white  p-2 md:p-10 rounded md:my-10'>
             <div className='bg-gray-800 border-2 border-black p-2  shadow '>
             <div className=' flex  items-center '>
               <button className='bg-white border-2 rounded-full w-8 h-8 md:w-12 md:h-12 flex items-center justify-center my-5 mr-2 flex-shrink-0' onClick={() => setShowContent(false)} >←</button>
@@ -221,7 +234,8 @@ const Index = () => {
               </div>
             </div>
           <div>
-          <div className='flex justify-center'>
+
+          <div className='flex justify-center '>
             <div class="border-x-4 h-2 w-2 border-black "></div>
           </div>
           <div className='flex justify-center mb-2'>
@@ -231,13 +245,13 @@ const Index = () => {
             <div>
              
               {messages.map((msg, index) => (
-                <div id={index} key={index} className='my-2'>
+                <div id={msg.id} key={msg.id} className='my-2'>
                   <hr />
                   {
                     msg.userId === userId ?
                     <>
 
-                      <h1>{index + 1} : {msg.userId}</h1>
+                      <h1> {msg.userId}</h1>
                       <div className='flex justify-end'>
                         <p className='bg-blue-500 inline-block px-3 py-2 text-white rounded-full my-2 text'>{msg.message}</p> 
                       </div>
@@ -245,9 +259,16 @@ const Index = () => {
                       <p className='text-gray-500'>{getRelativeTime(msg.timestamp)}</p>
                     </> :
                     <>
-                      <h1>{index + 1} : {msg.userId}</h1>
+                      <h1> {msg.userId}</h1>
+                      {/* 表示するのはメッセージのidではなくuseridにする */}
+                      {/* スクロール先はmessageのid */}
+                      <h1 className='text-sm text-blue-400'> ＞＞{msg.id}</h1>
                       <p className='bg-green-300 inline-block px-2 py-1 rounded-full my-2'>{msg.message}</p> 
-                      <p className='text-gray-500'>{getRelativeTime(msg.timestamp)}</p>
+                      <div className='flex justify-between'>
+                        <p className='text-gray-500'>{getRelativeTime(msg.timestamp)} </p>
+                        
+                      </div>
+                     
                     </>
                   }
                  
