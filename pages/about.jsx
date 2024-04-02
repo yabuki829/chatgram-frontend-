@@ -1,34 +1,34 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link' 
 import Image from "next/image";
 import tvimage from "../public/tv2.png";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPaperPlane,faBars } from '@fortawesome/free-solid-svg-icons';
+
 const About = () => {
+
+
   return (
     <div className='bg-gray-100 h-screen'>
-         <div className='flex justify-between md:justify-around items-center bg-blue-500'>
-       <div className='flex md:block items-center text-center my-4 md:my-10'>
+       <header className='flex justify-center items-center bg-blue-500'>
+       <div className='block items-center text-center my-4 md:my-10'>
 
-        <div className='hidden md:flex items-center '>
+        <Link href="/" className='flex items-center '>
           <Image className=' w-10 h-10 ' src={tvimage} alt="icon" />
-          <Link className='  text-3xl font-bold text-white mx-2' href="/">テレビ感想.com</Link>
-        </div>
+          <h1 className='text-3xl font-bold mx-2 text-white'>テレビ感想.com</h1>
+        </Link>
        
-        <Image className='block md:hidden w-20 h-20 mx-5 md:mx-10' src={tvimage} alt="icon" />
+        <h1 className='text-white font-bold'>このサイトについて</h1>
   
-        <select className='bg-white border' onChange={(e) => handleChange(e)}>
-          <option value="大阪">大阪</option>
-          <option value="東京">東京</option>
-              
-        </select>
+       
        </div>
-       <div>
-          <Link className='mx-2 font-bold hover:underline text-white mx-10' href="/about">About</Link>
-        </div>
 
-      </div>
-        
+      </header>
+     
+
+
         <div className='md:w-2/3 mx-auto bg-white p-4 md:p-10 rounded my-10'>
            
             <div className='my-2'>
@@ -49,7 +49,10 @@ const About = () => {
             </div>
             
         </div>
-
+        <div className='mx-4 md:mx-10'>
+        <Link  target="_blank" rel="noopener noreferrer"  className='text-blue-500 mx-2 font-bold' href="/about">このサイトについて</Link>
+        <Link target="_blank" rel="noopener noreferrer"  className='text-blue-500 mx-2 font-bold' href="/terms">利用規約</Link>
+      </div>
 
     </div>
 

@@ -5,7 +5,7 @@ const Terms = () => {
     <div className='bg-gray-100 h-full '>
         <div className='flex justify-between md:justify-around items-center  bg-white md:my-10'>
             <div className='text-center my-10'>
-                <Link className='  text-3xl font-bold' href="/">Chatgram</Link>
+                <Link className='  text-3xl font-bold' href="/">テレビ感想.com</Link>
             </div>
             <div>
                 <Link className='mx-2 font-bold' href="/about">About</Link>
@@ -17,7 +17,7 @@ const Terms = () => {
             <h1 className='font-bold text-4xl m-2'>利用規約</h1> 
             <div class="border-b-4 w-16 border-black rounded mb-2"></div>
             <br />
-            <p> 本利用規約 (以下「本規約」と言います。) には、「Chatgram」(以下、「本サービス」と言います。) の提供条件及び本サービスの運営者 (以下「運営者」と言います。) と登録ユーザの皆様との間の権利義務関係が定められています。本サービスの利用に際しては、本規約の全文をお読みいただいたうえで、本規約に同意いただく必要があります。</p>
+            <p> 本利用規約 (以下「本規約」と言います。) には、「テレビ感想.com」(以下、「本サービス」と言います。) の提供条件及び本サービスの運営者 (以下「運営者」と言います。) と登録ユーザの皆様との間の権利義務関係が定められています。本サービスの利用に際しては、本規約の全文をお読みいただいたうえで、本規約に同意いただく必要があります。</p>
             <br />
             <h1 className='font-bold'>第1条 (適用)</h1>
             <ol className='list-decimal list-inside space-y-2 mx-4 md:mx-10'>
@@ -44,6 +44,7 @@ const Terms = () => {
                 <li>他のユーザーに成りすます行為</li>
                 <li>当サービスに関連して，反社会的勢力に対して直接または間接に利益を供与する行為</li>
                 <li>本サービスの他のユーザーまたは第三者の知的財産権，肖像権，プライバシー，名誉その他の権利または利益を侵害する行為</li>
+                <li>製品、サービス等の販売目的、広告表示などの商業的目的の行為</li>
                 <li>以下の表現を含み，または含むと当社が判断する内容を本サービス上に投稿し，または送信する行為</li>
                 <ol className='list-decimal list-inside space-y-2 mx-4 md:mx-10'>
                     <li>過度に暴力的な表現</li>

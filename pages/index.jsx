@@ -7,7 +7,7 @@ import { ref, push,onValue } from "firebase/database";
 import { getAuth, onAuthStateChanged, signInAnonymously, } from "firebase/auth";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { faPaperPlane,faBars } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link' 
 import channels from "../channels"
 
@@ -195,15 +195,15 @@ const Index = () => {
   return (
     <div className='bg-gray-100 min-h-screen'>
       
-      <div className='flex justify-between md:justify-around items-center bg-blue-500'>
-       <div className='flex md:block items-center text-center my-4 md:my-10'>
+      <header className='flex justify-center items-center bg-blue-500'>
+       <div className='block items-center text-center my-4 md:my-10'>
 
-        <div className='hidden md:flex items-center '>
+        <div className='flex items-center '>
           <Image className=' w-10 h-10 ' src={tvimage} alt="icon" />
           <h1 className='text-3xl font-bold mx-2 text-white'>テレビ感想.com</h1>
         </div>
        
-        <Image className='block md:hidden w-20 h-20 mx-5 md:mx-10' src={tvimage} alt="icon" />
+       
   
         <select className='bg-white border' onChange={(e) => handleChange(e)}>
           <option value="大阪">大阪</option>
@@ -211,11 +211,10 @@ const Index = () => {
               
         </select>
        </div>
-       <div>
-          <Link className='mx-2 font-bold hover:underline text-white mx-10' href="/about">About</Link>
-        </div>
+     
+     
 
-      </div>
+      </header>
      
 
       {
@@ -332,7 +331,10 @@ const Index = () => {
         )
       }
       
-
+      <div className='mx-4 md:mx-10'>
+        <Link  rel="noopener noreferrer"  className='text-blue-500 mx-2 font-bold' href="/about">このサイトについて</Link>
+        <Link target="_blank" rel="noopener noreferrer"  className='text-blue-500 mx-2 font-bold' href="/terms">利用規約</Link>
+      </div>
       
      
     </div>
