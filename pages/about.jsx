@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Link from 'next/link' 
 import Image from "next/image";
 import tvimage from "../public/tv2.png";
-
+import tvimage2 from "../public/tv.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane,faBars } from '@fortawesome/free-solid-svg-icons';
 
@@ -11,7 +11,7 @@ const About = () => {
 
 
   return (
-    <div className='bg-gray-100 h-screen'>
+    <div className='flex flex-col min-h-screen bg-gray-100'>
        <header className='flex justify-center items-center bg-blue-500'>
        <div className='block items-center text-center my-4 md:my-10'>
 
@@ -29,7 +29,7 @@ const About = () => {
      
 
 
-        <div className='md:w-2/3 mx-auto bg-white p-4 md:p-10 rounded my-10'>
+        <div className='md:w-2/3 mx-auto bg-white p-4 md:p-10 rounded my-10 flex-grow'>
            
             <div className='my-2'>
                 <h1 className='font-bold'>Q1. どんなサイトですか？</h1>
@@ -49,10 +49,18 @@ const About = () => {
             </div>
             
         </div>
-        <div className='mx-4 md:mx-10'>
-        <Link  target="_blank" rel="noopener noreferrer"  className='text-blue-500 mx-2 font-bold' href="/about">このサイトについて</Link>
-        <Link target="_blank" rel="noopener noreferrer"  className='text-blue-500 mx-2 font-bold' href="/terms">利用規約</Link>
-      </div>
+        <footer className=' h-24 bg-green-200 p-4'>
+          <div className='flex items-center '>
+              <Image className=' w-10 h-10 ' src={tvimage2} alt="icon" />
+              <h1 className='text-3xl font-bold mx-2 '>テレビ感想.com</h1>
+            </div>
+        
+          <div className='mx-4 md:mx-10 '>
+            <Link  rel="noopener noreferrer"  className='text-blue-500 mx-2 font-bold' href="/about">このサイトについて</Link>
+            <Link target="_blank" rel="noopener noreferrer"  className='text-blue-500 mx-2 font-bold' href="/terms">利用規約</Link>
+          </div>
+        
+        </footer>
 
     </div>
 
