@@ -49,17 +49,27 @@ const About = () => {
             </div>
             
         </div>
-        <footer className=' h-24 bg-green-200 p-4'>
-          <div className='flex items-center '>
-              <Image className=' w-10 h-10 ' src={tvimage2} alt="icon" />
-              <h1 className='text-3xl font-bold mx-2 '>テレビ感想.com</h1>
+        <footer className=' bg-green-200  p-4'>
+          <div className='flex'>
+            <div>
+              <div className='flex items-center '>
+                  <Image className=' w-10 h-10 ' src={tvimage2} alt="icon" />
+                  <h1 className='text-3xl font-bold mx-2 '>テレビ感想.com</h1>
+                </div>
+              <h1 className='mx-4 md:mx-10 font-bold  '>- 匿名のテレビ感想SNS -</h1>
+              <br />
+              <div className='mx-4 md:mx-10 flex flex-col '>
+                <Link  rel="noopener noreferrer"  className='text-blue-500 mx-2 font-bold' href="/about">このサイトについて</Link>
+                <Link target="_blank" rel="noopener noreferrer"  className='text-blue-500 mx-2 font-bold' href="/terms">利用規約</Link>
+              </div>
+            
             </div>
-        
-          <div className='mx-4 md:mx-10 '>
-            <Link  rel="noopener noreferrer"  className='text-blue-500 mx-2 font-bold' href="/about">このサイトについて</Link>
-            <Link target="_blank" rel="noopener noreferrer"  className='text-blue-500 mx-2 font-bold' href="/terms">利用規約</Link>
+            <div className='h-48'>
+            広告
           </div>
-        
+          </div>
+         
+         <p> ©2024 @tv-kansou.com</p>
         </footer>
 
     </div>

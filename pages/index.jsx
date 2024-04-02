@@ -194,7 +194,7 @@ const Index = () => {
   
   
   return (
-    <div className='flex flex-col min-h-screen bg-gray-100'>
+    <div className='bg-gray-100 min-h-screen'>
       
       <header className='flex justify-center items-center bg-blue-500'>
        <div className='block items-center text-center my-4 md:my-10'>
@@ -220,7 +220,7 @@ const Index = () => {
 
       {
         showContent ? (
-          <div className='md:w-2/3 mx-auto bg-white p-4 md:p-10 rounded my-10 flex-grow'>
+        <div className='md:w-2/3 mx-auto bg-white p-4 md:p-10 rounded my-10' >
             <div className='bg-gray-800 border-2 border-black p-2  shadow '>
             <div className=' flex  items-center '>
               <button className='bg-white border-2 rounded-full w-8 h-8 md:w-12 md:h-12 flex items-center justify-center my-5 mr-2 flex-shrink-0' onClick={() => setShowContent(false)} >←</button>
@@ -301,7 +301,7 @@ const Index = () => {
             
         </div>
         ):(
-          <div className='md:w-1/3 mx-auto flex-grow'>
+          <div className='md:w-1/3 mx-auto'>
               
             <div className='grid grid-cols-3'>
             {[...Array(12).keys()].map((number) => {
@@ -332,7 +332,7 @@ const Index = () => {
         )
       }
       
-      <div className=' h-24 bg-green-200 p-4'>
+      <div className=' h-48 bg-green-200 p-4'>
         <div className='flex items-center '>
             <Image className=' w-10 h-10 ' src={tvimage2} alt="icon" />
             <h1 className='text-3xl font-bold mx-2 '>テレビ感想.com</h1>
