@@ -12,18 +12,17 @@ const About = () => {
 
   return (
     <div className='flex flex-col min-h-screen bg-gray-100'>
-       <header className='flex justify-center items-center bg-blue-500'>
-       <div className='block items-center text-center my-4 md:my-10'>
+       <header className='bg-blue-900'>
 
-        <Link href="/" className='flex items-center '>
-          <Image className=' w-10 h-10 ' src={tvimage} alt="icon" />
-          <h1 className='text-3xl font-bold mx-2 text-white'>テレビ感想.com</h1>
-        </Link>
-       
-        <h1 className='text-white font-bold'>このサイトについて</h1>
-  
-       
-       </div>
+       <div className='flex flex-col md:items-center md:justify-center p-4 md:p-1 md:my-10'>
+          <Link href="/" className='flex items-center'>
+            <Image className='w-10 h-10' src={tvimage} alt="icon" />
+            <h1 className='md:text-3xl font-bold mx-2 text-white'>テレビ感想.com</h1>
+          </Link>
+          <h1 className='text-white font-bold md:text-center text-left text-sm md:text-base'>このサイトについて</h1>
+        </div>
+
+
 
       </header>
      

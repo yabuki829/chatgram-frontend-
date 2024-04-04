@@ -196,12 +196,13 @@ const Index = () => {
   return (
     <div className='bg-gray-100 min-h-screen'>
       
-      <header className='flex justify-center items-center bg-blue-500'>
-       <div className='block items-center text-center my-4 md:my-10'>
+      <header className='md:flex md:justify-center md:items-center bg-blue-900'>
+        
+       <div className='flex justify-between md:block text-center p-4 md:my-10'>
 
         <div className='flex items-center '>
           <Image className=' w-10 h-10 ' src={tvimage} alt="icon" />
-          <h1 className='text-3xl font-bold mx-2 text-white'>テレビ感想.com</h1>
+          <h1 className='md:text-3xl font-bold mx-2 text-white'>テレビ感想.com</h1>
         </div>
        
        
