@@ -15,7 +15,7 @@ const Terms = () => {
         </div>
         <div className='md:w-3/4 mx-auto bg-white p-4 md:p-10 rounded'>
             <h1 className='font-bold text-4xl m-2'>利用規約</h1> 
-            <div class="border-b-4 w-16 border-black rounded mb-2"></div>
+            <div className="border-b-4 w-16 border-black rounded mb-2"></div>
             <br />
             <p> 本利用規約 (以下「本規約」と言います。) には、「テレビ感想.com」(以下、「本サービス」と言います。) の提供条件及び本サービスの運営者 (以下「運営者」と言います。) と登録ユーザの皆様との間の権利義務関係が定められています。本サービスの利用に際しては、本規約の全文をお読みいただいたうえで、本規約に同意いただく必要があります。</p>
             <br />

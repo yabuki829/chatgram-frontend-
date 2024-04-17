@@ -15,6 +15,7 @@ import channels from "../channels"
 
 import { useRouter } from 'next/router';
 
+
 const Tv = () => {
   const router = useRouter();
 
@@ -37,27 +38,6 @@ const Tv = () => {
   const [message, setMessage] = useState('');
 
   const auth = getAuth();
-  
-  useEffect(() => {
-    const dbRef = ref(database, program.room);
-    const unsubscribe = onValue(dbRef, (snapshot) => {
-      const value = snapshot.val();
-      console.log("取得", value);
-
-      const messages = value ? Object.entries(value).map(([key, msg]) => ({
-        ...msg, 
-        id: key 
-      })) : [];
-  
-      console.log(messages);
-      setMessages(messages);
-    });
-  
-    return () => unsubscribe();
-  }, [program]);
-
-
-
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, user => {
       if (user) {
@@ -75,6 +55,28 @@ const Tv = () => {
     return () => unsubscribe();
   }, []);
 
+
+  
+  useEffect(() => {
+    const dbRef = ref(database, program.room);
+    const unsubscribe = onValue(dbRef, (snapshot) => {
+      const value = snapshot.val();
+
+      const messages = value ? Object.entries(value).map(([key, msg]) => ({
+        ...msg, 
+        id: key 
+      })) : [];
+  
+      console.log(messages);
+      setMessages(messages);
+    });
+  
+    return () => unsubscribe();
+  }, [program]);
+
+
+
+  
   useEffect(() => {
     setShowContent(false)
     
@@ -194,7 +196,7 @@ const Tv = () => {
   const handleChange = (e) => {
     setLocation(e.target.value)
   }
-
+  
   
   
   return (
@@ -241,10 +243,10 @@ const Tv = () => {
           <div>
 
           <div className='flex justify-center '>
-            <div class="border-x-4 h-2 w-2 border-black "></div>
+            <div className="border-x-4 h-2 w-2 border-black "></div>
           </div>
           <div className='flex justify-center mb-2'>
-            <div class="border-y-4 w-32 md:w-48 h-2 border-black rounded "></div>
+            <div className="border-y-4 w-32 md:w-48 h-2 border-black rounded "></div>
           </div>
            
             <div>
@@ -353,7 +355,7 @@ const Tv = () => {
             
             </div>
             <div className='h-48'>
-            広告
+            
           </div>
           </div>
          

@@ -10,6 +10,8 @@ import soon from "../public/soon.svg";
 import { useRouter } from 'next/router';
 
 
+import Script from 'next/script';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
@@ -18,26 +20,37 @@ import Link from 'next/link'
 import {database } from '../firebase/firebase'
 import { ref, push,onValue } from "firebase/database";
 import { getAuth, onAuthStateChanged, signInAnonymously, } from "firebase/auth";
+import AdmaxSwitch from '@/components/molecules/ads';
 const Index = () => {
   const router = useRouter();
   const auth = getAuth();
 
   useEffect(() => {
+    // const unsubscribe = onAuthStateChanged(auth, user => {
+    //   if (user) {
+    //     // ログインしていれば遷移する
+    //     router.push('/tv');
+    //     // alert("ログイン済み")
+    //   }
+    // });
+    // return () => unsubscribe();
+  }, []);
+
+  const anonymousLogin = async () => {
     const unsubscribe = onAuthStateChanged(auth, user => {
       if (user) {
         // ログインしていれば遷移する
         router.push('/tv');
-        // alert("ログイン済み")
+      }
+      else {
+        router.push('/tv');
+        signInAnonymously(auth);
       }
     });
     return () => unsubscribe();
-  }, []);
-
-  const anonymousLogin = async () => {
     // ログインしてTVに遷移する
     // alert("匿名でログインして遷移します")
-    router.push('/tv');
-    signInAnonymously(auth);
+    
   }
   
   return (
@@ -57,8 +70,8 @@ const Index = () => {
 
       <div>
         
-        <div class="flex flex-col md:flex-row w-full">
-            <div class="order-1 md:order-none w-full md:w-1/2 flex items-center justify-center my-10 flex flex-col justify-center items-center">
+        <div className="flex flex-col md:flex-row w-full">
+            <div className="order-1 md:order-none w-full md:w-1/2 flex items-center justify-center my-10 flex flex-col justify-center items-center">
               <div className='p-4 w-4/5 md:bg-white rounded-full'>
                <h1 className="text-3xl font-bold pb-2 text-center ">すぐに参加できる!!</h1>
                <div className="md:flex justify-center items-center mx-auto rounded-full ">
@@ -89,10 +102,10 @@ const Index = () => {
         </div>
          
 
-        <div class="md:flex w-full">
+        <div className="md:flex w-full">
             <Image className='w-full  md:w-1/2 ' src={watch_tv} alt="icon" />
-            <div class="w-full md:w-1/2 flex items-center justify-center  ">
-                <div class="md:-full text-center  md:bg-blue-200 p-2 md:px-10 py-10  rounded-full">
+            <div className="w-full md:w-1/2 flex items-center justify-center  ">
+                <div className="md:-full text-center  md:bg-blue-200 p-2 md:px-10 py-10  rounded-full">
                     <h1 className='text-3xl font-bold'>テレビを見よう!!</h1>
                    
                     <p className='text-xl'>放送中の番組を確認して好きな番組を見よう</p>
@@ -102,9 +115,9 @@ const Index = () => {
         </div>
 
 
-        <div class="flex flex-col md:flex-row w-full">
-            <div class="order-1 md:order-none w-full md:w-1/2 flex items-center justify-center">
-                <div class="md:-full text-center  md:bg-red-200 p-2 md:px-10 py-10  rounded-full">
+        <div className="flex flex-col md:flex-row w-full">
+            <div className="order-1 md:order-none w-full md:w-1/2 flex items-center justify-center">
+                <div className="md:-full text-center  md:bg-red-200 p-2 md:px-10 py-10  rounded-full">
                     <h1 class="text-3xl font-bold">感想を言おう!!</h1>
                     <p class="text-xl">「今の面白かった」や「この俳優好き」など感想を言おう</p>
                     <button onClick={() => anonymousLogin()} className='bg-blue-400 px-4 py-2 rounded-md mt-2 text-white font-bold'>匿名でログインする</button>
@@ -113,10 +126,10 @@ const Index = () => {
             <Image className='w-full md:w-1/2 ' src={talk} alt="icon" />
         </div>
 
-        <div class="md:flex w-full">
+        <div className="md:flex w-full">
             <Image className='w-full  md:w-1/2 ' src={smile} alt="icon" />
-            <div class="w-full md:w-1/2 flex items-center justify-center  ">
-                <div class="md:-full text-center  md:bg-yellow-200 p-2 md:px-10 py-10  rounded-full">
+            <div className="w-full md:w-1/2 flex items-center justify-center  ">
+                <div className="md:-full text-center  md:bg-yellow-200 p-2 md:px-10 py-10  rounded-full">
                     <h1 className='text-3xl font-bold'>笑顔になろう!!</h1>
                    
                     <p className='text-xl'>このサイトはテレビを通じてみんなが笑顔になることを目指しています</p>
@@ -146,8 +159,8 @@ const Index = () => {
             
             </div>
             <div className='h-48'>
-            広告
-          </div>
+              <AdmaxSwitch id="cc0a4cb8f4652cadd5537fc002aba20f"/>
+            </div>
           </div>
          
          <p> ©2024 @テレビ感想.com</p>
