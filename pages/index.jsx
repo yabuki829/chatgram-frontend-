@@ -162,7 +162,9 @@ const Index = () => {
             
             </div>
             <div className='h-48'>
-             
+            <div className=' justify-center my-2 md:flex hidden'>
+        <AdMain admaxId="5dbd3319b921abe3753b3d433f896dad"/>
+      </div>
               
             </div>
           </div>
