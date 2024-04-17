@@ -20,7 +20,10 @@ import Link from 'next/link'
 import {database } from '../firebase/firebase'
 import { ref, push,onValue } from "firebase/database";
 import { getAuth, onAuthStateChanged, signInAnonymously, } from "firebase/auth";
-import AdmaxSwitch from '@/components/molecules/ads';
+import AdMain from '@/components/molecules/ad';
+
+
+
 const Index = () => {
   const router = useRouter();
   const auth = getAuth();
@@ -137,12 +140,12 @@ const Index = () => {
                 </div>
             </div>
         </div>
-       
+        
         
       
       </div>
     
-     
+
       <footer className=' bg-green-200  p-4'>
           <div className='flex'>
             <div>
@@ -159,7 +162,8 @@ const Index = () => {
             
             </div>
             <div className='h-48'>
-              <AdmaxSwitch id="cc0a4cb8f4652cadd5537fc002aba20f"/>
+             
+              
             </div>
           </div>
          

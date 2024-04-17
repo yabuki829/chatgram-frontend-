@@ -14,6 +14,8 @@ import channels from "../channels"
 
 
 import { useRouter } from 'next/router';
+import AdMain from '@/components/molecules/ad';
+import AdMobile from '@/components/molecules/adMobile';
 
 
 const Tv = () => {
@@ -224,6 +226,12 @@ const Tv = () => {
 
       </header>
      
+      <div className=' justify-center my-2 md:flex hidden'>
+        <AdMain admaxId="5dbd3319b921abe3753b3d433f896dad"/>
+      </div>
+      <div className='flex justify-center my-2 '>
+        < AdMobile admaxId="3d116bac98d314492a82a4b385c3fda2"/>
+      </div>
 
       {
         showContent ? (
@@ -245,6 +253,7 @@ const Tv = () => {
           <div className='flex justify-center '>
             <div className="border-x-4 h-2 w-2 border-black "></div>
           </div>
+
           <div className='flex justify-center mb-2'>
             <div className="border-y-4 w-32 md:w-48 h-2 border-black rounded "></div>
           </div>
@@ -338,6 +347,11 @@ const Tv = () => {
     
         )
       }
+     <div className=' justify-center my-2 md:flex hidden'>
+        <AdMain admaxId="5dbd3319b921abe3753b3d433f896dad"/>
+      </div>
+      <br />
+      
       
       <footer className=' bg-green-200  p-4'>
           <div className='flex'>
@@ -354,9 +368,7 @@ const Tv = () => {
               </div>
             
             </div>
-            <div className='h-48'>
-            
-          </div>
+
           </div>
          
          <p> ©2024 @テレビ感想.com</p>
