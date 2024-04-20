@@ -73,7 +73,7 @@ const Index = () => {
 
       <div>
         
-        <div className="flex flex-col md:flex-row w-full">
+        <div className="flex flex-col md:flex-row w-full bg-gradient-to-bl from-blue-100 via-green-100 to-yellow-100">
             <div className="order-1 md:order-none w-full md:w-1/2 flex items-center justify-center my-10 flex flex-col justify-center items-center">
               <div className='p-4 w-4/5 md:bg-white rounded-full'>
                <h1 className="text-3xl font-bold pb-2 text-center ">すぐに参加できる!!</h1>
@@ -95,48 +95,50 @@ const Index = () => {
             
                 </div>
                 <div className="flex justify-center">
-                <button onClick={() => anonymousLogin()} className='bg-blue-400 px-4 py-2 rounded-md mt-2 text-white font-bold'>匿名でログインする</button>
+                <button onClick={() => anonymousLogin()} className='bg-blue-400 px-4 py-2 rounded-md mt-2 text-white font-bold hover:bg-blue-300'>匿名でログインする</button>
                 </div>
               </div>
               
               
             </div>
+            
             <Image className='w-full md:w-1/2 ' src={soon} alt="icon" />
         </div>
          
 
-        <div className="md:flex w-full">
+        <div className="md:flex w-full bg-gradient-to-bl from-blue-100 via-green-100 to-yellow-100">
             <Image className='w-full  md:w-1/2 ' src={watch_tv} alt="icon" />
             <div className="w-full md:w-1/2 flex items-center justify-center  ">
                 <div className="md:-full text-center  md:bg-blue-200 p-2 md:px-10 py-10  rounded-full">
                     <h1 className='text-3xl font-bold'>テレビを見よう!!</h1>
                    
                     <p className='text-xl'>放送中の番組を確認して好きな番組を見よう</p>
-                    <button onClick={() => anonymousLogin()} className='bg-blue-400 px-4 py-2 rounded-md mt-2 text-white font-bold'>匿名でログインする</button>
+                    <button onClick={() => anonymousLogin()} className='bg-blue-400 px-4 py-2 rounded-md mt-2 text-white font-bold hover:bg-blue-300'>匿名でログインする</button>
                 </div>
             </div>
         </div>
 
 
-        <div className="flex flex-col md:flex-row w-full">
+        <div className="flex flex-col md:flex-row w-full bg-gradient-to-bl from-blue-100 via-green-100 to-yellow-100">
             <div className="order-1 md:order-none w-full md:w-1/2 flex items-center justify-center">
+
                 <div className="md:-full text-center  md:bg-red-200 p-2 md:px-10 py-10  rounded-full">
                     <h1 class="text-3xl font-bold">感想を言おう!!</h1>
                     <p class="text-xl">「今の面白かった」や「この俳優好き」など感想を言おう</p>
-                    <button onClick={() => anonymousLogin()} className='bg-blue-400 px-4 py-2 rounded-md mt-2 text-white font-bold'>匿名でログインする</button>
+                    <button onClick={() => anonymousLogin()} className='bg-blue-400 px-4 py-2 rounded-md mt-2 text-white font-bold hover:bg-blue-300'>匿名でログインする</button>
                 </div>
             </div>
             <Image className='w-full md:w-1/2 ' src={talk} alt="icon" />
         </div>
 
-        <div className="md:flex w-full">
+        <div className="md:flex w-full bg-gradient-to-bl from-blue-100 via-green-100 to-red-100">
             <Image className='w-full  md:w-1/2 ' src={smile} alt="icon" />
             <div className="w-full md:w-1/2 flex items-center justify-center  ">
                 <div className="md:-full text-center  md:bg-yellow-200 p-2 md:px-10 py-10  rounded-full">
                     <h1 className='text-3xl font-bold'>笑顔になろう!!</h1>
                    
                     <p className='text-xl'>このサイトはテレビを通じてみんなが笑顔になることを目指しています</p>
-                    <button onClick={() => anonymousLogin()} className='bg-blue-400 px-4 py-2 rounded-md mt-2 text-white font-bold'>匿名でログインする</button>
+                    <button onClick={() => anonymousLogin()} className='bg-blue-400 px-4 py-2 rounded-md mt-2 text-white font-bold hover:bg-blue-300'>匿名でログインする</button>
                 </div>
             </div>
         </div>
@@ -147,6 +149,9 @@ const Index = () => {
     
 
       <footer className=' bg-green-200  p-4'>
+          <div className=' justify-center my-2 md:flex hidden'>
+            <AdMain admaxId="5dbd3319b921abe3753b3d433f896dad"/>
+          </div>
           <div className='flex'>
             <div>
               <div className='flex items-center '>
@@ -161,12 +166,7 @@ const Index = () => {
               </div>
             
             </div>
-            <div className='h-48'>
-            <div className=' justify-center my-2 md:flex hidden'>
-        <AdMain admaxId="5dbd3319b921abe3753b3d433f896dad"/>
-      </div>
-              
-            </div>
+           
           </div>
          
          <p> ©2024 @テレビ感想.com</p>
