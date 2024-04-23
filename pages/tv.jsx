@@ -236,7 +236,7 @@ const Tv = () => {
       {
         showContent ? (
         <div className='md:w-2/3 mx-auto bg-white p-4 md:p-10 rounded my-10' >
-            <div className='bg-gray-800 border-2 border-black p-2  shadow '>
+            <div className='bg-gray-800 border-4 border-black p-2  shadow '>
             <div className=' flex  items-center '>
               <button className='bg-white border-2 rounded-full w-8 h-8 md:w-12 md:h-12 flex items-center justify-center my-5 mr-2 flex-shrink-0' onClick={() => setShowContent(false)} >←</button>
               {program.id !== "" && (
@@ -257,7 +257,8 @@ const Tv = () => {
           <div className='flex justify-center mb-2'>
             <div className="border-y-4 w-32 md:w-48 h-2 border-black rounded "></div>
           </div>
-           
+           <button className='text-white bg-gray-900 rounded-md px-2 py-1 hover:bg-gray-700'>番組表</button>
+           <br />
             <div>
              
               {messages.map((msg, index) => (
@@ -278,7 +279,7 @@ const Tv = () => {
                       <h1> {msg.userId}</h1>
                       {/* 表示するのはメッセージのidではなくuseridにする */}
                       {/* スクロール先はmessageのid */}
-                      <h1 className='text-sm text-blue-400'> ＞＞{msg.id}</h1>
+                     
                       <p className='bg-green-300 inline-block px-2 py-1 rounded-full my-2'>{msg.message}</p> 
                       <div className='flex justify-between'>
                         <p className='text-gray-500'>{getRelativeTime(msg.timestamp)} </p>
