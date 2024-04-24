@@ -310,7 +310,7 @@ const Tv = () => {
               
               { programs.map((data) => (
                 // TODO - 今後ルームに移動できるようにしたい
-               <div>
+               <div key={data.id}>
                   {data.title === program.title ? (
                     <h1 className=' my-2'><span className='bg-red-400 text-white px-2 py-1 font-bold rounded-md mr-2'>{formatTime(data.start_time)} ~</span>{data.title}</h1>
                   ):(
