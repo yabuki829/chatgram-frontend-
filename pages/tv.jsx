@@ -18,11 +18,16 @@ import AdMain from '@/components/molecules/ad';
 import AdMobile from '@/components/molecules/adMobile';
 
 
+
+
 const Tv = () => {
   const router = useRouter();
+  // https://qiita.com/t-sugimoto/items/9c01477c8998a1072225
+  const [isOpenTodayProgramsModal, setIsOpenTodayProgramsModal] = useState(false)
 
   const [showContent, setShowContent] = useState(false);
   const [location,setLocation] =  useState("大阪");
+  const [channel,setChannel] =  useState(1);
   const [program, setProgram] = useState({
     id: "",
     title: "",
@@ -32,6 +37,7 @@ const Tv = () => {
     tv_station: "",
     room: "d"
   });
+  const [programs, setPrograms] = useState([]);
 
   const [userId,setUserId] =  useState("none");
 
@@ -144,6 +150,8 @@ const Tv = () => {
   };
 
   const swith_channel = (number) => {
+    setIsOpenTodayProgramsModal(false)
+    setPrograms([])
     setProgram({
       id: "",
       title: "",
@@ -159,6 +167,7 @@ const Tv = () => {
     // alert(location+"の"+number+"チャンネルの番組を取得する")
     // const url = "http://127.0.0.1:8000/api/programs/";
     const url = process.env.NEXT_PUBLIC_BACKEND_URL + "api/programs"
+    setChannel(number)
     const data = {
       "channel": number,
       "location":location
@@ -188,7 +197,6 @@ const Tv = () => {
           setProgram(response.data)
         }
         
-        
       })
       .catch(error => {
         console.error('番組情報の取得中にエラーが発生しました', error);
@@ -197,6 +205,43 @@ const Tv = () => {
   };
   const handleChange = (e) => {
     setLocation(e.target.value)
+  }
+
+  const CurrentDate = () => {
+    const today = new Date()
+  
+    const year = today.getFullYear()
+    const month = ('0' + (today.getMonth() + 1)).slice(-2)
+    const day = ('0' + today.getDate()).slice(-2)
+  
+    return year + '-' + month + '-' + day + ' '
+  }
+
+  
+  const getTodayPrograms = () => {
+    // 今日の番組を全て取得する
+    const url = process.env.NEXT_PUBLIC_BACKEND_URL + "api/today"
+    const data = {
+      "channel": channel,
+      "location":location
+    }
+    axios.get(url,{
+      params: data
+    }).then((response)=>{
+      console.log(response.data)
+      setPrograms(response.data)
+    })
+  }
+  const openTodayPrograms = () => {
+          // モーダルを表示する
+    setIsOpenTodayProgramsModal(true)
+    
+    console.log("取得する")
+    getTodayPrograms()
+    
+    
+    
+
   }
   
   
@@ -232,13 +277,14 @@ const Tv = () => {
       <div className='flex justify-center my-2 '>
         < AdMobile admaxId="3d116bac98d314492a82a4b385c3fda2"/>
       </div>
+      
 
       {
         showContent ? (
         <div className='md:w-2/3 mx-auto bg-white p-4 md:p-10 rounded my-10' >
             <div className='bg-gray-800 border-4 border-black p-2  shadow '>
             <div className=' flex  items-center '>
-              <button className='bg-white border-2 rounded-full w-8 h-8 md:w-12 md:h-12 flex items-center justify-center my-5 mr-2 flex-shrink-0' onClick={() => setShowContent(false)} >←</button>
+              <button className='bg-white border-2 rounded-full w-8 h-8 md:w-12 md:h-12 flex items-center justify-center my-5 mr-2 flex-shrink-0 hover:bg-gray-200' onClick={() => setShowContent(false)} >←</button>
               {program.id !== "" && (
                 <p className='text-green-400  text-2xl font-bold'> {formatTime(program.start_time)} ~ {formatTime(program.end_time)}</p>
               )}
@@ -257,7 +303,29 @@ const Tv = () => {
           <div className='flex justify-center mb-2'>
             <div className="border-y-4 w-32 md:w-48 h-2 border-black rounded "></div>
           </div>
-           <button className='text-white bg-gray-900 rounded-md px-2 py-1 hover:bg-gray-700'>番組表</button>
+          
+           <button  onClick={() => openTodayPrograms()} className='text-white bg-gray-900 rounded-md px-2 py-1 hover:bg-gray-700'>番組表</button>
+           {isOpenTodayProgramsModal && 
+            <div>
+              
+              { programs.map((data) => (
+                // TODO - 今後ルームに移動できるようにしたい
+               <div>
+                  {data.title === program.title ? (
+                    <h1 className=' my-2'><span className='bg-red-400 text-white px-2 py-1 font-bold rounded-md mr-2'>{formatTime(data.start_time)} ~</span>{data.title}</h1>
+                  ):(
+                    <h1 className=' my-2'><span className='bg-blue-400 text-white px-2 py-1 font-bold rounded-md mr-2'>{formatTime(data.start_time)} ~</span>{data.title}</h1>
+                  )}  
+                 <hr />
+                 
+               </div>
+              ))}
+              <div className='flex justify-center'>
+                  <button onClick={() => setIsOpenTodayProgramsModal(false)} className='my-2 px-10 py-4 bg-white  rounded-full border-2 font-bold border-black hover:bg-gray-200'>閉じる
+                  </button>
+              </div>
+               
+            </div>}
            <br />
             <div>
              
