@@ -305,17 +305,21 @@ const Tv = () => {
           </div>
           
            <button  onClick={() => openTodayPrograms()} className='text-white bg-gray-900 rounded-md px-2 py-1 hover:bg-gray-700'>番組表</button>
+           <br />
            {isOpenTodayProgramsModal && 
-            <div>
+            <div className='my-2'>
               
               { programs.map((data) => (
                 // TODO - 今後ルームに移動できるようにしたい
-               <div key={data.id}>
+               <div className=' ' key={data.id}>
                   {data.title === program.title ? (
-                    <h1 className=' my-2'><span className='bg-red-400 text-white px-2 py-1 font-bold rounded-md mr-2'>{formatTime(data.start_time)} ~</span>{data.title}</h1>
+                    // 放送中の場合は色を赤にする
+                    <p className='bg-red-500 text-white text-center font-bold rounded-md'>{formatTime(data.start_time)} ~</p>
                   ):(
-                    <h1 className=' my-2'><span className='bg-blue-400 text-white px-2 py-1 font-bold rounded-md mr-2'>{formatTime(data.start_time)} ~</span>{data.title}</h1>
+                    <p className='bg-blue-400 text-white text-center   font-bold rounded-md'>{formatTime(data.start_time)} ~</p>
+                   
                   )}  
+                  <h1 className=' my-2 mx-4'>{data.title}</h1>
                  <hr />
                  
                </div>
